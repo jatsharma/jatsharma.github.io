@@ -1,0 +1,5 @@
+# Private resume drafts (not for publishing)
+new resume/
+
+# macOS
+.DS_Store

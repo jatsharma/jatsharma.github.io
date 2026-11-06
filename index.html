@@ -1,210 +1,386 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Jatin Sharma</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jatin Sharma · Backend &amp; Technical Lead</title>
+<meta name="description" content="Jatin Sharma, backend and technical lead for data platforms and trading systems. Kafka and ClickHouse pipelines at billions of rows, low-latency APIs, exchange and zk-rollup infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jatin Sharma · Backend &amp; Technical Lead">
+<meta property="og:description" content="Jatin Sharma, backend and technical lead for data platforms and trading systems. Kafka and ClickHouse pipelines at billions of rows, low-latency APIs, exchange and zk-rollup infrastructure.">
+<meta property="og:url" content="https://jatsharma.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://jatsharma.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141820'/%3E%3Ctext x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23f2a541'%3EJS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (max 1080px) — hero, a market-tape band of real figures, then work as case files, then timeline + stack, then contact. */
+:root {
+  --bg: #f1f3f6;
+  --surface: #ffffff;
+  --ink: #141820;
+  --muted: #586272;
+  --line: #d6dce4;
+  --accent: #a94f08;
+  --accent-soft: #f6e6d6;
+  --tape-bg: #141820;
+  --tape-ink: #e9edf2;
+  --tape-accent: #f2a541;
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  --s-1: 0.75rem; --s-2: 0.875rem; --s-3: 1rem; --s-4: 1.25rem; --s-5: 1.75rem; --s-6: 2.5rem; --s-7: clamp(2.75rem, 7vw, 4.75rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1318; --surface: #161b23; --ink: #e8ecf1; --muted: #98a3b2; --line: #273040;
+    --accent: #f2a541; --accent-soft: #2f2416; --tape-bg: #1c232e; --tape-ink: #e8ecf1; --tape-accent: #f2a541;
+    color-scheme: dark;
+  }
+}
 
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; }
+img { max-width: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: var(--s-3); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.label { font-family: var(--f-mono); font-size: var(--s-1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
 
-	<link rel="stylesheet" type="text/css" href="default.css">
-	<link id="theme-style" rel="stylesheet" type="text/css" href="">
+
+/* hero */
+.hero .wrap { padding-block: clamp(2.5rem, 7vw, 5rem) 2.5rem; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2.5rem; align-items: end; }
+.hero h1 { font-size: var(--s-7); line-height: 0.95; letter-spacing: -0.025em; font-weight: 700; }
+.hero .role { font-family: var(--f-display); font-size: var(--s-4); font-weight: 600; margin-top: 0.9rem; }
+.hero .role span { color: var(--accent); }
+.hero .lede { margin-top: 1.1rem; max-width: 58ch; color: var(--muted); font-size: 1.0625rem; }
+.hero .where { margin-top: 1rem; font-size: var(--s-2); }
+.links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.85rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); text-decoration: none; font-size: var(--s-2); font-weight: 500; color: var(--ink); cursor: pointer; font-family: var(--f-body); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+
+.now { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 1.25rem; display: grid; gap: 0.6rem; }
+.now .head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.pulse { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--f-mono); font-size: var(--s-1); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+.pulse::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.now h3 { font-size: var(--s-4); }
+.now p { font-size: var(--s-2); color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.chip { font-family: var(--f-mono); font-size: 0.72rem; padding: 0.15rem 0.5rem; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); white-space: nowrap; }
+
+/* tape */
+.tape { background: var(--tape-bg); color: var(--tape-ink); overflow: hidden; border-block: 1px solid var(--tape-bg); }
+.tape-track { display: flex; width: max-content; animation: tape 60s linear infinite; }
+.tape:hover .tape-track { animation-play-state: paused; }
+.tape-set { display: flex; }
+.tick { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.85rem 1.4rem; border-right: 1px solid color-mix(in srgb, var(--tape-ink) 14%, transparent); white-space: nowrap; }
+.tick .k { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; }
+.tick .v { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 0.95rem; font-weight: 500; color: var(--tape-accent); }
+@keyframes tape { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .tape-track { animation: none; width: auto; }
+  .tape-set { flex-wrap: wrap; }
+  .tape-set[aria-hidden="true"] { display: none; }
+  .pulse::before { animation: none; }
+}
+
+/* sections */
+section.block .wrap { padding-block: clamp(2.5rem, 6vw, 4rem); }
+.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); margin-bottom: 1.75rem; }
+.sec-head h2 { font-size: var(--s-5); letter-spacing: -0.01em; }
+.sec-head .label { text-align: right; }
+
+/* exchange projects */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.proj { display: grid; grid-template-rows: auto auto 1fr auto; gap: 0.6rem; padding: 1.25rem; border-top: 3px solid var(--ink); background: var(--surface); border-radius: 0 0 8px 8px; }
+.proj .meta { display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+.proj h3 { font-size: 1.15rem; }
+.proj p { font-size: var(--s-2); color: var(--muted); }
+.status { font-family: var(--f-mono); font-size: 0.7rem; padding: 0.1rem 0.45rem; border-radius: 4px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+
+/* case files */
+.client { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin-bottom: 1.25rem; font-size: var(--s-2); color: var(--muted); }
+.client strong { color: var(--ink); font-weight: 600; }
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1.4rem; display: grid; gap: 0.75rem; align-content: start; min-width: 0; }
+.case.wide { grid-column: 1 / -1; }
+.case h3 { font-size: 1.2rem; }
+.case p { font-size: 0.95rem; color: var(--muted); max-width: 68ch; }
+.figure { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.figure .big { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: clamp(1.4rem, 3.4vw, 1.9rem); font-weight: 500; color: var(--accent); letter-spacing: -0.02em; }
+.figure .unit { font-size: var(--s-1); color: var(--muted); font-family: var(--f-mono); }
+
+/* pipeline flow */
+.flow { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.4fr); align-items: stretch; gap: 0.5rem; margin-top: 0.25rem; }
+.stage { border: 1px solid var(--line); border-radius: 6px; padding: 0.7rem 0.8rem; display: grid; gap: 0.15rem; align-content: start; background: var(--bg); min-width: 0; }
+.stage b { font-family: var(--f-display); font-size: 0.98rem; }
+.stage span { font-size: 0.78rem; color: var(--muted); }
+.stores { display: grid; gap: 0.4rem; }
+.stores .stage { padding: 0.45rem 0.7rem; }
+.arrow { align-self: center; color: var(--accent); font-family: var(--f-mono); }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); margin-top: 0.5rem; }
+.stat { padding: 0.85rem 0.75rem 0 0; display: grid; gap: 0.1rem; }
+.stat .v { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 500; }
+.stat .k { font-size: 0.78rem; color: var(--muted); }
+
+.lead { margin-top: 1rem; display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 1.25rem; padding: 1.25rem 1.4rem; border: 1px dashed var(--line); border-radius: 8px; }
+.lead .figure .big { color: var(--ink); }
+.lead p { color: var(--muted); font-size: 0.95rem; }
+
+/* timeline + stack */
+.two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 3rem; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+.timeline li:first-child { padding-top: 0; }
+.timeline .when { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 0.15rem; }
+.timeline b { font-family: var(--f-display); font-size: 1.02rem; display: block; }
+.timeline span { font-size: var(--s-2); color: var(--muted); }
+.stack { display: grid; gap: 1.1rem; }
+.stack h3 { font-size: 0.95rem; margin-bottom: 0.45rem; }
+
+/* contact */
+.contact { border-top: 1px solid var(--line); }
+.contact .wrap { padding-block: 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem; }
+.contact h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); max-width: 18ch; }
+.email { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.email code { font-family: var(--f-mono); font-size: 1rem; padding: 0.45rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); user-select: all; overflow-wrap: anywhere; }
+.email-link { text-decoration: none; }
+.email-link:hover code { border-color: var(--accent); }
+footer .wrap { padding-block: 0 2rem; font-size: var(--s-1); color: var(--muted); font-family: var(--f-mono); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .two { grid-template-columns: minmax(0, 1fr); }
+  .projects { grid-template-columns: minmax(0, 1fr); }
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .arrow { justify-self: center; transform: rotate(90deg); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .cases { grid-template-columns: minmax(0, 1fr); }
+  .lead { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+  .sec-head .label { text-align: left; }
+}
+</style>
 </head>
 <body>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label">Backend &amp; Technical Lead</div>
+      <h1>Jatin Sharma</h1>
+      <p class="role">Data platforms <span>/</span> trading systems</p>
+      <p class="lede">I build and run backends for crypto trading and analytics. That has meant ingestion pipelines at billions of rows, APIs with sub-100&nbsp;ms p95, and leading the team behind them. Today I'm building exchange and zk-rollup infrastructure.</p>
+      <p class="where label">Pune, India · Open to remote &amp; relocation</p>
+      <div class="links">
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/jatsharma" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/jatsharma" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#contact">Email</a>
+      </div>
+    </div>
+    <aside class="now" aria-label="Current work">
+      <div class="head"><span class="pulse">Now building</span><span class="label">Since Jul 2026</span></div>
+      <h3>Zk-rollup DEX</h3>
+      <p>I own the backend and on-chain work: Rust for the canonical state logic, SP1 for proving, and Solidity contracts on Ethereum.</p>
+      <div class="chips"><span class="chip">Rust</span><span class="chip">SP1 zkVM</span><span class="chip">Solidity</span><span class="chip">Ethereum</span></div>
+    </aside>
+  </div>
+</header>
 
-	<section class="s1">
-		<div class="main-container">
-			<div class="greeting-wrapper">
-				<h1>Hi, I'm Jatin Sharma</h1>
-			</div>
+<div class="tape" aria-label="Key figures from DexCheck">
+  <div class="tape-track">
+    <div class="tape-set">
+      <div class="tick"><span class="k">P&amp;L query</span><span class="v">15+ min → &lt;1 min</span></div>
+      <div class="tick"><span class="k">Solana txs stored</span><span class="v">3B+</span></div>
+      <div class="tick"><span class="k">Growth</span><span class="v">25M+ rows/day</span></div>
+      <div class="tick"><span class="k">Peak chain read</span><span class="v">4k tx/s</span></div>
+      <div class="tick"><span class="k">API users</span><span class="v">10,000+</span></div>
+      <div class="tick"><span class="k">Peak MAU</span><span class="v">100,000+</span></div>
+      <div class="tick"><span class="k">Requests</span><span class="v">500k+/day</span></div>
+      <div class="tick"><span class="k">Key endpoints</span><span class="v">p95 &lt;100ms · p99 &lt;500ms</span></div>
+      <div class="tick"><span class="k">Coverage</span><span class="v">20+ chains · 40+ DEXs</span></div>
+    </div>
+    <div class="tape-set" aria-hidden="true">
+      <div class="tick"><span class="k">P&amp;L query</span><span class="v">15+ min → &lt;1 min</span></div>
+      <div class="tick"><span class="k">Solana txs stored</span><span class="v">3B+</span></div>
+      <div class="tick"><span class="k">Growth</span><span class="v">25M+ rows/day</span></div>
+      <div class="tick"><span class="k">Peak chain read</span><span class="v">4k tx/s</span></div>
+      <div class="tick"><span class="k">API users</span><span class="v">10,000+</span></div>
+      <div class="tick"><span class="k">Peak MAU</span><span class="v">100,000+</span></div>
+      <div class="tick"><span class="k">Requests</span><span class="v">500k+/day</span></div>
+      <div class="tick"><span class="k">Key endpoints</span><span class="v">p95 &lt;100ms · p99 &lt;500ms</span></div>
+      <div class="tick"><span class="k">Coverage</span><span class="v">20+ chains · 40+ DEXs</span></div>
+    </div>
+  </div>
+</div>
 
+<section class="block" aria-labelledby="ex-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="ex-h">Exchange projects</h2><span class="label">Stackera · Backend lead · Dec 2025 – now</span></div>
+    <div class="projects">
+      <article class="proj">
+        <div class="meta"><span class="label num">Jul 2026 – now</span><span class="status">In development</span></div>
+        <h3>Zk-rollup DEX</h3>
+        <p>Backend and on-chain work. Canonical state logic in Rust, proofs generated with SP1, settlement through Solidity contracts on Ethereum.</p>
+        <div class="chips"><span class="chip">Rust</span><span class="chip">SP1</span><span class="chip">Solidity</span></div>
+      </article>
+      <article class="proj">
+        <div class="meta"><span class="label num">Jan – Jul 2026</span><span class="status">Prototype</span></div>
+        <h3>Centralized exchange</h3>
+        <p>Built the Go backend: order matching engine, risk management system, durable balance ledger, a price oracle built from major exchange prices, and an in-house market maker.</p>
+        <div class="chips"><span class="chip">Go</span><span class="chip">Matching engine</span><span class="chip">RMS</span></div>
+      </article>
+      <article class="proj">
+        <div class="meta"><span class="label num">Dec 2025 – Aug 2026</span></div>
+        <h3>AI support assistant</h3>
+        <p>Built the Python retrieval and orchestration layer for an exchange's support and marketing assistant, using RAG and hybrid search over ClickHouse.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">Hybrid search</span></div>
+      </article>
+    </div>
+  </div>
+</section>
 
-			<div class="intro-wrapper">
-				<div class="nav-wrapper">
+<section class="block" aria-labelledby="dc-h" style="padding-top:0">
+  <div class="wrap" style="padding-top:0">
+    <div class="sec-head"><h2 id="dc-h">DexCheck</h2><span class="label">DEX analytics platform · Backend lead · Jun 2022 – Jan 2026</span></div>
 
-					
-					<a href="index.html">
-						<div class="dots-wrapper">
-							<div id="dot-1" class="browser-dot"></div>
-							<div id="dot-2" class="browser-dot"></div>
-							<div id="dot-3" class="browser-dot"></div>
-						</div>
-					</a>
-					
+    <div class="cases">
+      <article class="case wide">
+        <div class="label">Ingestion pipeline</div>
+        <h3>Billions of on-chain trades, replayable without duplicates</h3>
+        <p>Chain data streams over WebSockets into Kafka. PostgreSQL is the source of truth, ClickHouse serves analytics and Elasticsearch serves search. Writes are idempotent, with retries, backfills and reconciliation, so missed data can be replayed safely. Background jobs run on Celery and RabbitMQ.</p>
+        <div class="flow" role="img" aria-label="Pipeline: 20+ chains feed WebSocket ingest, then Kafka, then decoders, then PostgreSQL, ClickHouse and Elasticsearch">
+          <div class="stage"><b>20+ chains</b><span>40+ DEXs</span></div>
+          <div class="arrow">→</div>
+          <div class="stage"><b>WebSockets</b><span>stream ingest</span></div>
+          <div class="arrow">→</div>
+          <div class="stage"><b>Kafka</b><span>decode · idempotent write</span></div>
+          <div class="arrow">→</div>
+          <div class="stores">
+            <div class="stage"><b>PostgreSQL</b><span>source of truth</span></div>
+            <div class="stage"><b>ClickHouse</b><span>analytics</span></div>
+            <div class="stage"><b>Elasticsearch</b><span>search</span></div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="v">3B+</span><span class="k">Solana transactions</span></div>
+          <div class="stat"><span class="v">25M+</span><span class="k">new rows per day</span></div>
+          <div class="stat"><span class="v">4k/s</span><span class="k">peak chain read</span></div>
+          <div class="stat"><span class="v">1k+/s</span><span class="k">decoded and stored</span></div>
+          <div class="stat"><span class="v">40+</span><span class="k">DEXs indexed</span></div>
+        </div>
+      </article>
 
-					<ul id="navigation">
-						<li><a href="index.html#contact">Contact</a></li>
+      <article class="case">
+        <div class="label">Performance</div>
+        <h3>Wallet P&amp;L moved to ClickHouse</h3>
+        <div class="figure"><span class="big">15 min → &lt;1 min</span><span class="unit">99% of wallets</span></div>
+        <p>Heavy P&amp;L reads caused a production outage. Rolling P&amp;L on a 2B+ row Solana trades table stayed slow for wallets with millions of trades, even with indexes and per-token batching. I moved P&amp;L analytics from PostgreSQL to ClickHouse.</p>
+      </article>
 
-					</ul>
-				</div>
+      <article class="case">
+        <div class="label">Incident response</div>
+        <h3>One wallet stalled Solana indexing</h3>
+        <div class="figure"><span class="big">3B+ rows</span><span class="unit">pipeline protected</span></div>
+        <p>Repeated P&amp;L requests for one high-volume wallet overloaded the database and stopped indexing. I killed the running queries, disabled those reads, and limited P&amp;L to wallets under a trade-count threshold using a precomputed trade-count table.</p>
+      </article>
 
-				<div class="left-column">
-					<img id="profile_pic" src="images/jatin.jpg">
-					<h5 style="text-align: center;line-height: 0;">Personalize Theme</h5>
+      <article class="case">
+        <div class="label">API &amp; real-time</div>
+        <h3>REST API, WebSocket feeds and alerting</h3>
+        <div class="figure"><span class="big">p95 &lt;100 ms</span><span class="unit">p99 &lt;500 ms, key endpoints</span></div>
+        <p>Owned the Python backend serving 10,000+ API users and 100,000+ monthly active users at peak, at 500,000+ requests a day.</p>
+      </article>
 
-					<div id="theme-options-wrapper">
-						<div data-mode="light" id="light-mode" class="theme-dot"></div>
-						<div data-mode="blue" id="blue-mode" class="theme-dot"></div>
-						<div data-mode="green" id="green-mode" class="theme-dot"></div>
-						<div data-mode="purple" id="purple-mode" class="theme-dot"></div>
-					</div>
+      <article class="case">
+        <div class="label">Monetisation</div>
+        <h3>Paid API layer</h3>
+        <div class="chips"><span class="chip">Google OAuth</span><span class="chip">JWT</span><span class="chip">Hashed API keys</span><span class="chip">RBAC tiers</span><span class="chip">Redis token bucket</span></div>
+        <p>Sign-in with Google, JWT sessions, hashed API keys, role-based access per subscription tier, and token-bucket rate limiting per user and per IP.</p>
+      </article>
+    </div>
 
-					<p id="settings-note">*Theme settings will be saved for<br>your next vist</p>
-				</div>
+    <div class="lead">
+      <div>
+        <div class="label">Leadership</div>
+        <div class="figure"><span class="big">4–5 engineers</span></div>
+        <div class="label num">Jun 2024 – Jan 2026</div>
+      </div>
+      <p>Managed the backend and DevOps team. I planned and assigned work, ran design and code reviews, and was the technical contact for product and the client.</p>
+    </div>
+  </div>
+</section>
 
-				<div class="right-column">
+<section class="block" aria-labelledby="tl-h" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <div class="sec-head"><h2 id="tl-h">Experience</h2><span class="label">6 years</span></div>
+        <ol class="timeline">
+          <li><span class="when">Feb 2026 – now</span><div><b>Backend Lead · Stackera</b><span>Exchange client projects</span></div></li>
+          <li><span class="when">Apr 2022 – Feb 2026</span><div><b>Software Engineer III · Stackera</b><span>Backend lead on DexCheck</span></div></li>
+          <li><span class="when">Jul 2021 – Apr 2022</span><div><b>Associate Backend Developer · Stackera</b><span>Algorithmic trading and analytics services; blockchain and graph nodes</span></div></li>
+          <li><span class="when">Nov 2020 – Jul 2021</span><div><b>Earlier roles</b><span>C Simplify IT · Freelance Python developer · Edugorilla</span></div></li>
+          <li><span class="when">2012 – 2015</span><div><b>Diploma, Electrical Engineering</b><span>Pusa Institute of Technology, New Delhi</span></div></li>
+        </ol>
+      </div>
+      <div>
+        <div class="sec-head"><h2>Stack</h2></div>
+        <div class="stack">
+          <div><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">Go</span><span class="chip">Rust</span><span class="chip">Solidity</span><span class="chip">SQL</span><span class="chip">JavaScript</span></div></div>
+          <div><h3>Backend</h3><div class="chips"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">WebSockets</span><span class="chip">Celery</span><span class="chip">OAuth 2.0</span><span class="chip">JWT</span><span class="chip">RBAC</span></div></div>
+          <div><h3>Data &amp; messaging</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">ClickHouse</span><span class="chip">Redis</span><span class="chip">Elasticsearch</span><span class="chip">Kafka</span><span class="chip">RabbitMQ</span><span class="chip">Alembic</span></div></div>
+          <div><h3>Infrastructure</h3><div class="chips"><span class="chip">Linux</span><span class="chip">Docker</span><span class="chip">Bare metal</span><span class="chip">AWS EC2</span><span class="chip">GitHub Actions</span><span class="chip">Prometheus</span><span class="chip">Grafana</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<div id="preview-shadow">
-						<div id="preview">
-							<div id="corner-tl" class="corner"></div>
-							<div id="corner-tr" class="corner"></div>
-							<h3>What I Do</h3>
-							<p>I'm a Software developer, working in Algorithmic Trading and Backend Development.</p>
-							<div id="corner-br" class="corner"></div>
-							<div id="corner-bl" class="corner"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section class="contact" id="contact" aria-labelledby="ct-h">
+  <div class="wrap">
+    <h2 id="ct-h">Hiring for backend or platform leadership?</h2>
+    <div class="email">
+      <a class="email-link" href="mailto:jatin.jsharma@outlook.com"><code id="email-addr">jatin.jsharma@outlook.com</code></a>
+      <button class="btn" id="copy-email" type="button">Copy email</button>
+    </div>
+  </div>
+</section>
 
-	<section class="s2">
-		<div class="main-container">
+<footer><div class="wrap">© 2026 Jatin Sharma · Pune, India</div></footer>
 
-			<div class="about-wrapper">
-				<div class="about-me">
-					<h4>More about me</h4>
-
-					<p>I love to play around with new concepts and learn the ones which tickle my brain.</p>
-
-					<p>I'm passionate about machine learning and artificial intelligence. Looking for opportunities in same field</p>
-
-
-					<hr>
-
-					<h4>TOP EXPERTISE</h4>
-
-					<p>Python developer with primary focus on Data science: <a target="_blank" href="resume.pdf">Download Resume</a></p>
-
-					<div id="skills">
-						<ul>
-							<li>Python</li>
-							<li>Django</li>
-							<li>Pandas</li>
-							<li>Scikit-Learn</li>
-							<li>Tensorflow</li>
-						</ul>
-
-						<ul>
-							<li>Keras</li>
-							<li>Matplotlib/Seaborn</li>
-							<li>Git</li>
-							<li>SQL</li>
-							<li>HTML/CSS</li>
-						</ul>
-
-						<ul>
-							<li>Tornado</li>
-							<li>JS</li>
-							<li>Jquery</li>
-							<li>Java</li>
-							<li>Spring boot</li>
-						</ul>
-
-					</div>
-
-				</div>
-
-				
-				<div class="social-links">
-					<img id="social_img" src="images/linkedin.png">
-					<h3>Find me on Linkedin & Github</h3>
-
-					<a target="_blank" href="https://www.linkedin.com/in/jatsharma">Linkedin: @Jatsharma</a>
-					<br>
-					<a target="_blank" href="https://www.github.com/jatsharma">Github: @Jatsharma</a>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-	<section class="s1">
-		<div class="main-container">
-			<h3 style="text-align: center;">Some of my past projects</h3>
-
-			<div class="post-wrapper">
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="images/scrap.png">
-						<div class="post-preview">
-							<h6 class="post-title">Craiglist Clone(Better graphics)</h6>
-							<p class="post-intro">Made a craiglist scrapper with Python and Django.</p>
-							<a href="scrap.html">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="images/crm.jpg">
-						<div class="post-preview">
-							<h6 class="post-title">Basic CRM Website</h6>
-							<p class="post-intro">A CRM Webiste with Python and Django</p>
-							<a href="crm.html">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="images/keras.png">
-						<div class="post-preview">
-							<h6 class="post-title">Machine Learning Projects</h6>
-							<p class="post-intro">Multiple Machine Learning notebooks using Scikit-learn, Keras/Tensorflow etc.</p>
-							<a href="ml.html">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div>
-				</div>
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="images/api.png">
-						<div class="post-preview">
-							<h6 class="post-title">Django Rest API Project</h6>
-							<p class="post-intro">An API app built with django and rest framework.</p>
-							<a href="api.html">Read More</a>
-						</div>
-					</div>
-				</div>
-
-				<div>
-				</div>
-
-
-			</div>
-		</div>
-	</section>
-
-	<section class="s2">
-		<div class="main-container">
-			<a href=""></a>
-			<h3 style="text-align: center;">Get In Touch</h3>
-			<div class="social-links" id="contact">
-				<a target="_blank" href="mailto:jatsharma9@gmail.com">Email: jatin.jsharma@outlook.com</a>
-			</div>
-			<br>
-			<br>
-		</div>
-	</section> 
-
-	<script type="text/javascript" src="script.js"></script>
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var addr = document.getElementById('email-addr');
+  btn.addEventListener('click', function () {
+    var text = addr.textContent;
+    function selectFallback() {
+      var r = document.createRange(); r.selectNodeContents(addr);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected — press Ctrl/⌘ C';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy email'; }, 1800);
+      }, selectFallback);
+    } else { selectFallback(); }
+  });
+})();
+</script>
 </body>
 </html>
